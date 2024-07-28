@@ -12,6 +12,7 @@ let notesObj = getNotes();
 let myObj = {
     title: addTitle.value,
     text: addText.value,
+    timestamp: new Date().toLocaleString(),
   };
 
   if (addText.value.length == "") {
@@ -55,6 +56,7 @@ function shownotes() {
                         <h6 class="card-title">Note ${index + 1}</h6>
                         <h5 class="card-title">${element.title}</h5>
                         <p class="card-text">${element.text}</p>
+                        <p class="card-timestamp">${element.timestamp}</p>
                         <div class="d-flex">
                             <button id="${index}" onclick="editNoteFunc(this.id)" class="btn btn-dark btn-sm me-2">Edit Note</button>
                             <button id="${index}" onclick="deleteNoteFunc(this.id)" class="btn btn-dark btn-sm">Delete Note</button>
@@ -82,8 +84,8 @@ function deleteNoteFunc(index) {
 function editNoteFunc(index) {
   let notesObj = getNotes();
    let note = notesObj[index];
-  document.getElementById("addTitle").value = note.title;
-  document.getElementById("addText").value = note.text;
+  addTitleElement.value = note.title;
+  addTextAreaElement.value = note.text;
   notesObj.splice(index, 1);
   saveNotes(notesObj);
   shownotes();
