@@ -84,8 +84,8 @@ function deleteNoteFunc(index) {
 function editNoteFunc(index) {
   let notesObj = getNotes();
    let note = notesObj[index];
-  addTitleElement.value = note.title;
-  addTextAreaElement.value = note.text;
+   document.getElementById("addTitle").value = note.title;
+  document.getElementById("addText").value = note.text;
   notesObj.splice(index, 1);
   saveNotes(notesObj);
   shownotes();
